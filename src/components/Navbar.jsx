@@ -36,8 +36,11 @@ const Navbar = () => {
             >
               <div className="w-10 rounded-full">
                 <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  alt="user photo"
+                  src={
+                    user?.photoUrl ||
+                    "https://t4.ftcdn.net/jpg/01/24/65/69/240_F_124656969_x3y8YVzvrqFZyv3YLWNo6PJaC88SYxqM.jpg"
+                  }
                 />
               </div>
             </div>
@@ -51,7 +54,14 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <a>Settings</a>
+                <Link to="/connections" className="justify-between">
+                  Connections
+                </Link>
+              </li>
+              <li>
+                <Link to="/requests" className="justify-between">
+                  Requests
+                </Link>
               </li>
               <li>
                 <p onClick={handleLogout}>Logout</p>

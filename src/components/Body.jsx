@@ -30,7 +30,7 @@ const Body = () => {
     <div>
       <Navbar></Navbar>
       <Outlet />
-      <Footer></Footer>
+      {/* <Footer></Footer> */}
     </div>
   );
 };
