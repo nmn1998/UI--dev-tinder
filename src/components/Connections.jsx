@@ -1,19 +1,20 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { BASE_URL } from "../utils/constants";
-import UserCard from "./UserCard";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { useNavigate } from "react-router-dom";
 
 const Connections = () => {
   const dispatch = useDispatch();
   const connections = useSelector((store) => store.connections);
+  const navigate = useNavigate();
   const getConnections = async () => {
     try {
       const res = await axios.get(BASE_URL + "/user/connections", {
         withCredentials: true,
       });
-     
+
       dispatch(addConnections(res?.data?.data));
     } catch (err) {
       console.log(err);
@@ -47,6 +48,16 @@ const Connections = () => {
                 )}
               </h2>
               <p>{connection.about}</p>
+              <button
+                className="m-4 btn btn-primary"
+                onClick={() =>
+                  navigate(
+                    `/chat/${connection._id}?name=${connection.firstName} ${connection.lastName}`
+                  )
+                }
+              >
+                Chat
+              </button>
             </div>
           );
         })}
